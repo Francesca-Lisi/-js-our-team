@@ -1,3 +1,13 @@
 #card{
-  height: 250px;
+  height: 200px;
+  padding: 10px;
+}
+
+.bg-grey{
+  background-color: #202427;
+}
+
+#card:hover{
+  opacity: 0.8;
+  cursor: pointer;
 }

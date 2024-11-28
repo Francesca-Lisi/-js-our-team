@@ -45,12 +45,12 @@ const personalCard = (member) => {
 const {name, role, email, img} = member;
  console.log(name, role, email, img)
   
-  const card = `<div id="card" class="col d-flex bg-warning">
-                  <img src="${img}" alt="${name}">
-                  <div class="dati">
+  const card = `<div id="card" class="col m-2 d-flex bg-grey text-light ">
+                  <img src="${img}" alt="${name} class="m-5">
+                  <div class="dati m-3">
                     <h3 id="name">${name}</h3>
                     <span id="role">${role}</span> <br>
-                    <span id="email">${email}</span>
+                    <a href="#" id="email" >${email}</a>
                   </div>
                 </div>`
 
@@ -81,3 +81,4 @@ console.log(cards)
 
 // INVOCO LA FUNZIONE
 printTeam(teamMembers)
+
