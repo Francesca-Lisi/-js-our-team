@@ -78,7 +78,17 @@ console.log(cards)
 
 }
 
-
 // INVOCO LA FUNZIONE
 printTeam(teamMembers)
 
+//richiamo il form da HTML
+
+const form = document.querySelector('form');
+
+//creo una funzione che mi cancella tutti i campi, da usare sia per dopo l'invio del form che collegata al bottone "Cancella"
+const resetFields = () => {
+  document.getElementById('name').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('img').value = '';
+}
