@@ -45,7 +45,7 @@ const personalCard = (member) => {
 const {name, role, email, img} = member;
  console.log(name, role, email, img)
   
-  const card = `<div id="card" class="col m-2 d-flex bg-grey text-light ">
+  const card = `<div id="card" class="col d-flex bg-grey text-light ">
                   <img src="${img}" alt="${name} class="m-5">
                   <div class="dati m-3">
                     <h3 id="name">${name}</h3>
@@ -67,14 +67,13 @@ const printTeam = (array) => {
   //Inizializzo una variabile vuota
   let cards = '';
   //creo il ciclo per ottenere ogni oggerro dall'array
-  for (let member of array){
+  for (let member of teamMembers){
   //concateno le card utilizzando la prima il cui valore sarà quello della funzione precedente 
   cards += personalCard(member)
   }
   //inserisco la card creata precedentemente nel file html attraverso .innerHTML
   membersContainer.innerHTML = cards;
 
-console.log(cards)
 
 }
 
@@ -92,3 +91,32 @@ const resetFields = () => {
   document.getElementById('email').value = '';
   document.getElementById('img').value = '';
 }
+
+
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  //recupero i dati inseriti nel form e gli assegno una variabile omonima a quelle usate in precedenza
+
+  const name = document.getElementById('name').value;
+  const role = document.getElementById('role').value;
+  const email = document.getElementById('email').value;
+  const img = document.getElementById('img').value;
+   console.log(name, role, email, img)
+  // creo un nuovo oggetto da pushare nell'array precedente
+  const newMember = {
+    name,
+    role,
+    email,
+    img
+  }
+
+  console.log(newMember)
+  teamMembers.push(newMember)
+
+  //inserisco il nuovo oggetto all'interno della funzione per creare la nuova card
+  printTeam(teamMembers)
+  //e resetto il form
+  resetFields()
+})
