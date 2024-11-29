@@ -97,28 +97,43 @@ const resetFields = () => {
 form.addEventListener('submit', e => {
   e.preventDefault();
 
+
   //recupero i dati inseriti nel form e gli assegno una variabile omonima a quelle usate in precedenza
+  form.classList.add('d-none')
 
-  const name = document.getElementById('name').value;
-  const role = document.getElementById('role').value;
-  const email = document.getElementById('email').value;
-  const img = document.getElementById('img').value;
-   console.log(name, role, email, img)
-  // creo un nuovo oggetto da pushare nell'array precedente
-  const newMember = {
-    name,
-    role,
-    email,
-    img
-  }
-
-  console.log(newMember)
-  teamMembers.push(newMember)
-
-  //inserisco il nuovo oggetto all'interno della funzione per creare la nuova card
-  printTeam(teamMembers)
-  //e resetto il form
-  resetFields()
+  document.querySelector('.loader').classList.remove('d-none')
+  setTimeout(() => {
+    document.querySelector('.loader').classList.add('d-none')
+    addMember();
+  }, 3000)
+  
 })
 
-//NON FUNZIONAA
+function addMember () {
+    const name = document.getElementById('name-input').value;
+    const role = document.getElementById('role-input').value;
+    const email = document.getElementById('email-input').value;
+    const img = document.getElementById('img').value;
+
+    console.log(document.getElementById('name-input'))
+    console.log(name, role, email, img)
+    // creo un nuovo oggetto da pushare nell'array precedente
+    const newMember = {
+      name,
+      role,
+      email,
+      img
+    }
+
+    console.log(newMember)
+    teamMembers.push(newMember)
+
+    //inserisco il nuovo oggetto all'interno della funzione per creare la nuova card
+    printTeam(teamMembers)
+    //e resetto il form
+    resetFields()
+    
+    form.classList.add('d-none')
+
+    document.getElementById('messaggio').classList.remove('d-none')
+}
